@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        const port = 3010;
+        var socket = new WebSocket(`ws://localhost:${port}`)
+
+        socket.addEventListener('open', function (){
+            document.getElementById('postShow').innerText = '服务连接成功了'
+        })
+        function post(){
+            var value = document.getElementById('postInput').value
+            socket.send(value)
+        }
+        socket.addEventListener('message',function (rec){
+            document.getElementById("message").innerHTML+=rec.data+'<br>';
+        })
+    </script>
+</head>
+<body>
+<input id="postInput" type="text">
+<button id="postButton" onclick="post()">POST</button>
+<br>
+<p id="postShow">Welcome</p>
+<div style="width: 500px;height: 500px;border: 1px solid black" id="message"></div>
+</body>
+</html>

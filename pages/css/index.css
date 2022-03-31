@@ -1,0 +1,20 @@
+body {
+    background-color: black;
+}
+
+label {
+    color:white;
+    font-family: Hei;
+}
+input{
+    border-radius: 5px;
+}
+button {
+    color:black;
+    font-size: 15px;
+    border-radius: 5px;
+    width: 80px;
+    background-color: white;
+    margin-left: 20px;
+    font-family: Hei;
+}

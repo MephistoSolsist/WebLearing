@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <script src='https://cdn.jsdelivr.net/npm/axios@0.26.1/dist/axios.min.js'></script>
+    <script>
+        function post() {
+            axios.post('http://192.168.42.212:3001/login', {
+                'username': document.getElementById('user').value,
+                'password': document.getElementById('password').value
+            })
+                .then(function (response) {
+                    if (typeof response.data == "object") {
+                        document.getElementById('tip').innerText = '欢迎你' + response.data[1];
+                        localStorage.setItem("id", response.data[0])
+                        window.location.href = 'user.html'
+                    } else {
+                        document.getElementById('tip').innerText = response.data;
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+<div class='view' align="center" style="margin-top:80px;">
+    <img src="../img/logo.jpg" width="200" height="200" style="margin-bottom: 10px;"><br>
+    <label for="user">USERNAME:</label><input id='user' type="text"><br><br>
+    <label for="password">PASSWORD:</label><input id='password' type="password"><br><br><br>
+    <button onclick="post()">log in</button>
+    <br>
+    <button onclick="window.location.href='signup.html'">sign up</button>
+    <br>
+    <h3 style="color: white;font-family: Hei;font-size: 20px" id="tip"></h3>
+</div>
+</body>
+</html>

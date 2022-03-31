@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+    <script src='https://cdn.jsdelivr.net/npm/axios@0.26.1/dist/axios.min.js'></script>
+    <script>
+        var name = 'NULL'
+        var iconPath = `../icon/default.jpg`
+        function load() {
+            var id = localStorage.getItem('id')
+            axios.post('http://192.168.42.212:3001/user', {
+                'id': id
+            })
+                .then(function (response) {
+                    name = response.data[0]
+                    iconPath = response.data[1]
+                    document.getElementById('name').innerText = name;
+                    document.getElementById('icon').src = iconPath;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+    </script>
+</head>
+<body onload="load()">
+<img id="icon" style="border-radius: 50%;width: 70px;float: left">
+<br><label for="icon" style="font-family: Hei;font-size: large" id="name"></label>
+</body>
+</html>
