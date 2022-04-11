@@ -9,7 +9,7 @@
         var iconPath = `../icon/default.jpg`
         function load() {
             var id = localStorage.getItem('id')
-            axios.post('http://192.168.42.212:3001/user', {
+            axios.post('http://localhost:3001/user', {
                 'id': id
             })
                 .then(function (response) {

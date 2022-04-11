@@ -6,7 +6,7 @@
     <script src='https://cdn.jsdelivr.net/npm/axios@0.26.1/dist/axios.min.js'></script>
     <script>
         function post() {
-            axios.post('http://192.168.42.212:3001/login', {
+            axios.post('http://localhost:3001/login', {
                 'username': document.getElementById('user').value,
                 'password': document.getElementById('password').value
             })
